@@ -1,5 +1,3 @@
-//MONGODB PW: hCe02Hfv4Of6P6OM//
-// B CONNECTION: mongodb+srv://patrick:<password>@cluster0.mmcxp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority//
 
 const express = require('express');
 const bodyParser = require('body-parser');

@@ -1,24 +1,22 @@
-//MONGODB PW: hCe02Hfv4Of6P6OM//
-// B CONNECTION: mongodb+srv://patrick:<password>@cluster0.mmcxp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority//
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
+require('dotenv').config();
+
 
 const saucesRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://patrick:hCe02Hfv4Of6P6OM@cluster0.mmcxp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority')
-  .then(() => {
-    console.log('Successfully connected to MongoDB Atlas!');
-  })
-  .catch((error) => {
-    console.log('Unable to connect to MongoDB Atlas!');
-    console.error(error);
-  });
+mongoose.connect(process.env.DB_CON, {
+  useUnifiedTopology: true,
+  useNewUrlParser: true, 
+  useCreateIndex: true
+})
+.then(() => console.log('Successfully connected to MongoDB Atlas!'))
+.catch(() => console.log('Unable to connect to MongoDB Atlas!'));
 
 
 app.use((req, res, next) => {

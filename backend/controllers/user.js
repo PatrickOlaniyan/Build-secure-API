@@ -4,15 +4,15 @@ const bcrypt = require('bcrypt');
 const User = require('../models/user');
 
 exports.login = (req, res, next) => {
-    User.findOne({ email: req.body.email }).then(
-        (user) => {
+    User.findOne({ email: req.body.email })
+        .then((user) => {
             if (!user) {
                 return res.status(401).json({
                     error: new Error('User not found!')
                 });
             }
-            bcrypt.compare(req.body.password, user.password).then(
-                (valid) => {
+            bcrypt.compare(req.body.password, user.password)
+                .then((valid) => {
                     if (!valid) {
                         return res.status(401).json({
                             error: new Error('Incorrect password!')

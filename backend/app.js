@@ -4,7 +4,6 @@ const mongoose = require('mongoose');
 const path = require('path');
 require('dotenv').config();
 
-
 const saucesRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');
 
